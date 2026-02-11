@@ -1,4 +1,5 @@
 import '../css/TodoItem.css'
+import { memo } from 'react';
 
 const TodoItem = ({id, isDone, content, date, onUpdate, onDelete}) => {
   const onChangeIsDone = (e)=>{
@@ -10,7 +11,8 @@ const TodoItem = ({id, isDone, content, date, onUpdate, onDelete}) => {
 
   return <>
     <div className="TodoItem">
-      <input type="checkbox" checked={isDone} onChange={onChangeIsDone}/>
+      <input type="checkbox" checked={isDone} onChange={onChangeIsDone} readOnly/>
+
       <div className="content">{content}</div>
       <div className="date">{new Date(date).toLocaleDateString()}</div>
       <button onClick={onClickDelete}>삭제</button>
@@ -18,4 +20,4 @@ const TodoItem = ({id, isDone, content, date, onUpdate, onDelete}) => {
     </> 
 };
 
-export default TodoItem;
+export default memo(TodoItem);
